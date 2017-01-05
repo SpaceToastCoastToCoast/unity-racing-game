@@ -36,4 +36,5 @@ Write a script and/or use Unity components to make the opponent car follow the t
 ###Stretch goals
 - If you used the NavMesh to move your AI car, try switching it to the physics engine and writing your own AI for it.
 - Place multiple opponents in a scene and consider how you can streamline the interactions amongst themselves.
+- For a more challenging game, research and implement "rubber-band AI"--racing AI that builds up more energy the further back it is from an opponent, and "snaps" forward past its competitors at an incredible pace once it hits its tipping point.
 - Complete any stretch goals from previous lessons.
