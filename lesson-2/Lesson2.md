@@ -29,4 +29,5 @@ Your track must include a finish line that is clearly visible. Create a material
 ###Stretch goals
 - A Quad creates a perfectly flat surface to drive on. Unity provides a means for creating ground that varies in elevation with the Terrain class. Incorporate this component into your track.
 - Create some props that cars can collide with or knock out of the way as they drive. Place them on an appropriate layer and allow the physics engine to simulate their behavior when they are hit.
+- Implement ramps or springboards on your track.
 - Any stretch goals from Lesson 1 that you have not yet added to your project.
