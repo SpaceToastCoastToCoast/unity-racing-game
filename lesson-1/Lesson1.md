@@ -6,11 +6,11 @@ Create a quad, an empty GameObject, and a capsule. Name and tag the Gameobject s
 ###Controlling the car
 Attach a script to the parent Player object that controls the car like a car behaves in real life. Requirements:
 
-- Consider the gas and brake pedals of a car. One pedal moves the car forward relative to its front wheels, while the other brings the speed of the car towards zero.
+- Consider the gas and brake pedals of a car. One pedal moves the car forward relative to its front wheels, while the other brings the speed of the car towards zero. In other words, the gas pedal changes an object's velocity.
 - Consider moving in reverse, and how a car moves at a different speed in reverse than it does in drive.
 - Consider how the steering wheel does not *cause* horizontal movement, but rather rotates the car's forward direction relative to the position of the wheel.
 
-Remember to move the whole car using Unity's physics engine and not by its Transform. Moving only the transform conflicts with the physics engine and causes unexpected behavior. Rigidbody class methods and documentation will help you shape the car's behavior.
+Remember to move the whole car using Unity's physics engine and not by its Transform. Moving only the transform conflicts with the physics engine and causes unexpected behavior. Rigidbody class methods and documentation will help you shape the car's behavior. You can still access properties of the transform if you need to, but you should treat them as read-only.
 
 ###Camera setup
 Using a script, make the camera follow the car and remain centered on its back bumper.
