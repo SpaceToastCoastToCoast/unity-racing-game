@@ -1,4 +1,9 @@
 #Weapons and powerups
+
+#####Data types to understand
+- Raycast and OverlapSphere: These methods serve as an instant way to check if one object is in the path or range, respectively, of another.
+- RaycastHit and the `out` keyword: We can use the `out` keyword with a function parameter at call time in order to retrieve data from that function in an already-initialized variable. RaycastHit is a data type designed around this functionality, and returns data about the first collider your Raycast comes into contact with.
+
 What separates a kart racing game from a traditional racing game is weapons and powerups. Traditional racing games often aim for a more realistic feel which excludes outside distractions from the thrill of driving, but many include basic powerups like temporary speed boosts. Kart racers combine combat with racing, like with shell items in Mario Kart. Some, like Twisted Metal or Kirby Air Ride, include a health system which disqualifies racers once they take too much damage; others simply use weapons to slow opponents down. Which system you implement is up to you.
 
 ###Powerups

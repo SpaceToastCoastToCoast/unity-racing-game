@@ -1,5 +1,8 @@
 #Layers, physics, and interacting with the level environment
 
+#####Data types to understand
+- Collider: This class represents objects that can collide with each other, whether to bounce off each other like solid objects, or to trigger an event when an object interacts with the bounds of a trigger collider.
+
 ###Layers
 Layers provide both organization and grouping of objects, and information for the physics engine regarding what interactions between objects to track and calculate. 32 layers are available in Unity's editor, 8 of which are reserved as defaults. Creating and managing layers can greatly speed up your game and improve the accuracy of the physics engine. In some cases, you can halve the number of checks and calculations the physics engine does per frame, which can almost double your efficiency.
 
