@@ -5,12 +5,12 @@ using UnityEngine;
 public class MoveCarForce : MonoBehaviour {
 	float v, h; //vertical, horizontal input
 	bool b; //brakes
-	public float speed = 100f;
-	public float maxSpeed = 100f;
-	public float reverseMultiplier = 5f;
-	public float angularSpeed = 60f;
-	public float maxAngularSpeed = 100f;
-	public float maxStoppedTurnSpeed = 2f;
+	public float engineTorque = 50000f; //how much force the engine can apply
+	public float maxSpeed = 100f; //how fast the vehicle can go
+	public float reverseMultiplier = 5f; //the factor by which speed in reverse is divided
+	public float turnForce = 80000f; //how much force it takes to turn the wheels while in motion
+	public float maxTurnForce = 4000f; //the maximum force that can be applied to the steering
+	public float maxStoppedTurnSpeed = 2f; //the maximum degrees per frame that the vehicle can turn while stopped
 	float newRot;
 	Rigidbody rb;
 	Vector3 newVelocity;
@@ -45,18 +45,21 @@ public class MoveCarForce : MonoBehaviour {
 		rb.velocity = Vector3.ClampMagnitude (rb.velocity, maxSpeed);
 
 		//Add force in that direction
-		rb.AddRelativeForce(newVelocity.normalized * speed);
+		rb.AddRelativeForce(newVelocity.normalized * engineTorque);
 
 	}
 
 	void Brakes(bool b){
 		if (b) {
 			//Bring its velocity toward zero.
-			newVelocity = Vector3.Lerp (rb.velocity, Vector3.zero, speed * Time.deltaTime);
+			newVelocity = Vector3.Lerp (rb.velocity, Vector3.zero, rb.mass * Time.deltaTime);
 			//Keep the existing y velocity so gravity stays active.
 			newVelocity.y = rb.velocity.y;
 
 			rb.velocity = newVelocity;
+
+			//Also bring angular velocity towards zero
+			rb.angularVelocity = Vector3.Lerp (rb.angularVelocity, Vector3.zero, rb.mass * Time.deltaTime);
 		}
 	}
 
@@ -77,7 +80,10 @@ public class MoveCarForce : MonoBehaviour {
 			//Use torque around y-axis while force is being applied
 
 			//ClampMagnitude to limit the torque so it does not exceed a maximum level
-			rb.AddTorque (Vector3.ClampMagnitude(transform.up * h * angularSpeed, maxAngularSpeed));
+			rb.AddTorque (Vector3.ClampMagnitude(transform.up * h * turnForce, maxTurnForce));
+
+			//clamp the angular velocity so that the result of line 83 also does not exceed maximum velocity
+			rb.angularVelocity = Vector3.ClampMagnitude(rb.angularVelocity, maxSpeed / 2);
 		}
 	}
 }
